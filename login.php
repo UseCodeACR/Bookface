@@ -17,12 +17,12 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-            <a class="nav-link active" href="Index.html">Home
+            <a class="nav-link" href="index.php">Home
                 <span class="visually-hidden">(current)</span>
             </a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="signup.php">Login</a>
+            <a class="nav-link active" href="signup.php">Login</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
@@ -38,5 +38,41 @@
         </div>
     </div>
     </nav>
+
+
+    <?php
+    
+    $servername ="localhost";
+    $username = "bookface";
+    $password = "1234";
+    
+    //connect to database
+    $conn = mysqli_connect($servername, $username, $password, "bookface");
+    //check connection
+    if(!$conn){
+        die("Connection failed: ".mysqli_connect_error());
+    }else{
+        echo "Connection successful";
+    }
+    
+    ?>
+
+    <form action="signup-action.php" method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        </fieldset>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+    </form>
+
+    
+    
 </body>
 </html>
