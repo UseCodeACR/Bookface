@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,25 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
     <?php include "Style/links.php"; ?>
+    <?php include "PHPFunc\db-connect";?>
 </head>
 <body>
     
 
+
 <?php
-    $servername ="localhost";
-    $username = "bookface";
-    $password = "1234";
-    
-    //connect to database
-    $conn = mysqli_connect($servername, $username, $password, "bookface");
-    //check connection
-    if(!$conn){
-        die("Connection failed: ".mysqli_connect_error());
-    }else{
-        echo "Connection successful";
-    }
-?>
-<?php
+    $conn = connect();
     echo "Added: " . $_POST["name"] . " " . $_POST["email"] . "  To the database";
     $hash = $_POST["password"];
     $hash = password_hash($hash, PASSWORD_DEFAULT);
@@ -32,7 +25,12 @@
     $stmt = $conn->prepare($query);
     $stmt->bind_param("sss", $_POST["name"], $_POST["email"], $hash);
     $stmt->execute();
+    $_SESSION["setmessage"] = true;
+    header ("Location: index.php");
+
+
 ?>
+
 
 
 

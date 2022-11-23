@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
     <?php include "Style/links.php"; ?>
+    <?php include "PHPFunc\db-connect";?>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -22,7 +23,7 @@
             </a>
             </li>
             <li class="nav-item">
-            <a class="nav-link active" href="signup.php">Login</a>
+            <a class="nav-link active" href="signup.php">Sign Up</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
@@ -31,31 +32,17 @@
             <a class="nav-link" href="#">About</a>
             </li>
         </ul>
-        <form class="d-flex">
-            <input class="form-control me-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <?php if(connect()):?>
+            <span class="badge rounded-pill bg-success">Connected</span>
+        <?php else:?>
+            <span class="badge rounded-pill bg-danger">Failed</span>
+        <?php endif;?>
         </div>
     </div>
     </nav>
 
 
-    <?php
-    
-    $servername ="localhost";
-    $username = "bookface";
-    $password = "1234";
-    
-    //connect to database
-    $conn = mysqli_connect($servername, $username, $password, "bookface");
-    //check connection
-    if(!$conn){
-        die("Connection failed: ".mysqli_connect_error());
-    }else{
-        echo "Connection successful";
-    }
-    
-    ?>
+
 
     <form action="signup-action.php" method="post">
         <div class="form-group" >

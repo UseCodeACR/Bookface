@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
     <?php include "Style/links.php"; ?>
+    <?php include "PHPFunc\db-connect";?>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -22,7 +26,7 @@
             </a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="signup.php">Login</a>
+            <a class="nav-link" href="signup.php">Sign Up</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
@@ -31,12 +35,28 @@
             <a class="nav-link" href="#">About</a>
             </li>
         </ul>
-        <form class="d-flex">
-            <input class="form-control me-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <?php if(connect()):?>
+            <span class="badge rounded-pill bg-success">Connected</span>
+        <?php else:?>
+            <span class="badge rounded-pill bg-danger">Failed</span>
+        <?php endif;?>
+        
         </div>
     </div>
     </nav>
+
+    <?php
+    if(isset($_SESSION["setmessage"])){
+        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+        <strong>Success!</strong> You have successfully signed up.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>";
+        unset($_SESSION["setmessage"]);
+    }
+  ?>
+
+
+
+
 </body>
 </html>

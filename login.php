@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
     <?php include "Style/links.php"; ?>
+    <?php include "PHPFunc\db-connect";?>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -22,7 +23,7 @@
             </a>
             </li>
             <li class="nav-item">
-            <a class="nav-link active" href="signup.php">Login</a>
+            <a class="nav-link active" href="signup.php">Sign Up</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
@@ -31,45 +32,33 @@
             <a class="nav-link" href="#">About</a>
             </li>
         </ul>
-        <form class="d-flex">
-            <input class="form-control me-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <?php if(connect()):?>
+            <span class="badge rounded-pill bg-success">Connected</span>
+        <?php else:?>
+            <span class="badge rounded-pill bg-danger">Failed</span>
+        <?php endif;?>
         </div>
     </div>
     </nav>
 
 
-    <?php
-    
-    $servername ="localhost";
-    $username = "bookface";
-    $password = "1234";
-    
-    //connect to database
-    $conn = mysqli_connect($servername, $username, $password, "bookface");
-    //check connection
-    if(!$conn){
-        die("Connection failed: ".mysqli_connect_error());
-    }else{
-        echo "Connection successful";
-    }
-    
-    ?>
 
     <form action="signup-action.php" method="post">
-        <div class="form-group">
-            <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <div class="form-group" >
+            <label for="exampleInputName" class="form-label mt-4" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Name</label>
+            <input type="text" name="name" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter Name" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%;">
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <label for="exampleInputEmail1" class="form-label mt-4" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%;">
         </div>
-        </fieldset>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </fieldset>
+        <div class="form-group">
+            <label for="exampleInputPassword1" class="form-label mt-4" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%;">
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary form-control" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">
+        </div>
     </form>
 
     
