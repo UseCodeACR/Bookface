@@ -11,12 +11,14 @@ session_start();
     <title>BookFace</title>
     <?php include "Style/links.php"; ?>
     <?php include "PHPFunc\db-connect";?>
+    <?php include "PHPFunc\dbcheck.php";?>
 </head>
 <body>
     
 
 
 <?php
+    dbcheck();
     $conn = connect();
     echo "Added: " . $_POST["name"] . " " . $_POST["email"] . "  To the database";
     $hash = $_POST["password"];

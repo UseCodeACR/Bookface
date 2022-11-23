@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,8 +44,15 @@
     </div>
     </nav>
 
-
-
+    <?php
+    if(isset($_SESSION["emailverify"])){
+        echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+        <strong>Oops!!</strong> Email already exists!
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>";
+        unset($_SESSION["emailverify"]);
+    }
+    ?>
 
     <form action="signup-action.php" method="post">
         <div class="form-group" >
