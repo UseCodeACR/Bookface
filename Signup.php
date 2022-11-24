@@ -29,7 +29,7 @@ session_start();
             <a class="nav-link active" href="signup.php">Sign Up</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" href="messages.php">Messages</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="#">About</a>
@@ -58,15 +58,15 @@ session_start();
     <form action="signup-action.php" method="post">
         <div class="form-group" >
             <label for="exampleInputName" class="form-label mt-4" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Name</label>
-            <input type="text" name="name" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter Name" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%;">
+            <input type="text" name="name" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter Name" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%;" required>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1" class="form-label mt-4" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Email address</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%;">
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%;" required>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1" class="form-label mt-4" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%;">
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%;"required>
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary form-control" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">

@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messages</title>
+    <?php include "Style/links.php"; ?>
+    <?php include "PHPFunc\db-connect";?>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -30,6 +32,14 @@
             <a class="nav-link" href="#">About</a>
             </li>
         </ul>
+        <?php if(connect()):?>
+            <span class="badge rounded-pill bg-success">Connected</span>
+        <?php else:?>
+            <span class="badge rounded-pill bg-danger">Failed</span>
+        <?php endif;?>
+        </div>
+    </div>
+    </nav>
 
 </body>
 </html>
