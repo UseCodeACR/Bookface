@@ -21,7 +21,7 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-            <a class="nav-link active" href="Index.html">Home
+            <a class="nav-link active" href="index.php">Home
                 <span class="visually-hidden">(current)</span>
             </a>
             </li>
@@ -52,6 +52,13 @@ session_start();
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
         </div>";
         unset($_SESSION["setmessage"]);
+    }
+    if(isset($_SESSION["loggedin"])){
+        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+        <strong>Success!!</strong> Your Logged In!
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>";
+        unset($_SESSION["loggedin"]);
     }
   ?>
 

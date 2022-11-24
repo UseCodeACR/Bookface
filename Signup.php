@@ -52,6 +52,7 @@ session_start();
         </div>";
         unset($_SESSION["emailverify"]);
     }
+    
     ?>
 
     <form action="signup-action.php" method="post">
@@ -69,6 +70,9 @@ session_start();
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary form-control" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">
+        </div>
+        <div class="form-group">
+            <a href="login.php" class="btn btn-primary form-control" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Login</a>
         </div>
     </form>
 

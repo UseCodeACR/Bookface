@@ -29,8 +29,6 @@ session_start();
     $stmt->execute();
     $_SESSION["setmessage"] = true;
     header ("Location: index.php");
-
-
 ?>
 
 
