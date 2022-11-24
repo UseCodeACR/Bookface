@@ -18,4 +18,9 @@ function dbcheck(){
     }else{}
 }
 
+function dbpasswordcheck(){
+    session_start();
+    include "PHPFunc\db-connect.php";
+}
+
 ?>
