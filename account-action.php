@@ -11,7 +11,6 @@ session_start()
     <title>BookFace</title>
     <?php include "Style/links.php"; ?>
     <?php include "PHPFunc\db-connect";?>
-    <?php include "PHPFunc\dbcheck.php";?>
 </head>
 <body>
     
@@ -19,8 +18,9 @@ session_start()
 
 <?php
     $conn = connect();
-    dbchecklogin();
-    
+    $_SESSION["loggedout"] = true;
+    $_SESSION["setmessage"] = true;
+    header("Location: index.php");
 ?>
 
 

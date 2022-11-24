@@ -25,15 +25,23 @@ session_start();
                 <span class="visually-hidden">(current)</span>
             </a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link active" href="signup.php">Sign Up</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="messages.php">Messages</a>
-            </li>
+
+            <?php if (!isset($_SESSION['loggedin'])):?>
+                <li class="nav-item">
+                    <a class="nav-link active" href="signup.php">Sign Up</a>
+                </li>
+            <?php endif;?>
+
+            <?php if (isset($_SESSION['loggedin'])):?>
+                <li class="nav-item">
+                <a class="nav-link" href="messages.php">Messages</a>
+                </li>
+            <?php endif;?>
+
             <li class="nav-item">
             <a class="nav-link" href="#">About</a>
             </li>
+
         </ul>
         <?php if(connect()):?>
             <span class="badge rounded-pill bg-success">Connected</span>

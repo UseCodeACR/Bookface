@@ -1,3 +1,6 @@
+<?php
+session_start()
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,15 +25,23 @@
                 <span class="visually-hidden">(current)</span>
             </a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="signup.php">Sign Up</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link active" href="messages.php">Messages</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-            </li>
+            <?php if (!isset($_SESSION['loggedin'])):?>
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.php">Sign Up</a>
+                </li>
+            <?php endif;?>
+
+            <?php if (isset($_SESSION['loggedin'])):?>
+                <li class="nav-item">
+                <a class="nav-link" href="messages.php">Messages</a>
+                </li>
+            <?php endif;?>
+            
+            <?php if(isset($_SESSION['loggedin'])):?>
+                <li class="nav-item">
+                    <a class="nav-link" href="account.php">Account</a>
+                </li>
+            <?php endif;?>
         </ul>
         <?php if(connect()):?>
             <span class="badge rounded-pill bg-success">Connected</span>

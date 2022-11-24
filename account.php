@@ -25,15 +25,9 @@ session_start();
                 <span class="visually-hidden">(current)</span>
             </a>
             </li>
-            <?php if (isset($_SESSION['setmessage'])):?>
+            <?php if (!isset($_SESSION['loggedin'])):?>
                 <li class="nav-item">
                     <a class="nav-link" href="signup.php">Sign Up</a>
-                </li>
-            <?php endif;?>
-
-            <?php if (isset($_SESSION['setmessage'])):?>
-                <li class="nav-item">
-                <a class="nav-link" href="login.php">Login</a>
                 </li>
             <?php endif;?>
 
@@ -42,11 +36,9 @@ session_start();
                     <a class="nav-link" href="messages.php">Messages</a>
                 </li>
             <?php endif;?>
-            <?php if(isset($_SESSION['loggedin'])):?>
-                <li class="nav-item">
-                    <a class="nav-link" href="account.php">Account</a>
-                </li>
-            <?php endif;?>
+            <li class="nav-item">
+            <a class="nav-link" href="account.php">Account</a>
+            </li>
         </ul>
         <?php if(connect()):?>
             <span class="badge rounded-pill bg-success">Connected</span>
@@ -58,28 +50,14 @@ session_start();
     </div>
     </nav>
 
+    
+    <form action="account-action.php" method="post">
+        <button type="submit" name="logout" class="btn btn-primary" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Log Out</button>
+    </form>
+
+
     <?php
-    if(isset($_SESSION["setmessage"])){
-        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-        <strong>Success!</strong> You have successfully signed up.
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-        </div>";
-        unset($_SESSION["setmessage"]);
-    }
-    if(isset($_SESSION["loggedin"])){
-        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-        <strong>Success!!</strong> Your Logged In!
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-        </div>";
-        unset($_SESSION["loggedin"]);
-    }
-    if(isset($_SESSION["loggedout"])){
-        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-        <strong>Success!!</strong> You are not logged in!
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-        </div>";
-        unset($_SESSION["loggedout"]);
-    }
+
   ?>
 
 
