@@ -9,7 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
     <?php include "Style/links.php"; ?>
-    <?php include "PHPFunc\db-connect";?>
+    <?php include "PHPFunc\db-connect.php";?>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -26,21 +26,12 @@ session_start();
             </a>
             </li>
 
-            <?php if (!isset($_SESSION['loggedin'])):?>
+            <?php if (!isset($_SESSION['signup'])):?>
                 <li class="nav-item">
                     <a class="nav-link active" href="signup.php">Sign Up</a>
                 </li>
             <?php endif;?>
 
-            <?php if (isset($_SESSION['loggedin'])):?>
-                <li class="nav-item">
-                <a class="nav-link" href="messages.php">Messages</a>
-                </li>
-            <?php endif;?>
-
-            <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-            </li>
 
         </ul>
         <?php if(connect()):?>

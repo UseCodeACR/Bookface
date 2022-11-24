@@ -9,7 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
     <?php include "Style/links.php"; ?>
-    <?php include "PHPFunc\db-connect";?>
+    <?php include "PHPFunc\db-connect.php";?>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -25,13 +25,13 @@ session_start();
                 <span class="visually-hidden">(current)</span>
             </a>
             </li>
-            <?php if (isset($_SESSION['setmessage'])):?>
+            <?php if (isset($_SESSION['signup'])):?>
                 <li class="nav-item">
                     <a class="nav-link" href="signup.php">Sign Up</a>
                 </li>
             <?php endif;?>
 
-            <?php if (isset($_SESSION['setmessage'])):?>
+            <?php if (!isset($_SESSION['loggedin'])):?>
                 <li class="nav-item">
                 <a class="nav-link" href="login.php">Login</a>
                 </li>
@@ -59,12 +59,12 @@ session_start();
     </nav>
 
     <?php
-    if(isset($_SESSION["setmessage"])){
+    if(isset($_SESSION["signup"])){
         echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
         <strong>Success!</strong> You have successfully signed up.
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
         </div>";
-        unset($_SESSION["setmessage"]);
+        unset($_SESSION["signup"]);
     }
     if(isset($_SESSION["loggedin"])){
         echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>

@@ -9,7 +9,7 @@ session_start()
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
     <?php include "Style/links.php"; ?>
-    <?php include "PHPFunc\db-connect";?>
+    <?php include "PHPFunc\db-connect.php";?>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">

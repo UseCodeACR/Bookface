@@ -1,5 +1,5 @@
-<?php
-session_start()
+<?php 
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -11,17 +11,23 @@ session_start()
     <title>BookFace</title>
     <?php include "Style/links.php"; ?>
     <?php include "PHPFunc\db-connect.php";?>
+    <?php include "PHPFunc\dbcheck.php";?>
 </head>
 <body>
     
 
 
 <?php
+    dbcheck();
     $conn = connect();
-    $_SESSION["loggedout"] = true;
-    $_SESSION["setmessage"] = true;
-    header("Location: index.php");
+    $query = "INSERT INTO messages (message, userid) VALUES (?,?)";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("si", $_POST["message"],$_SESSION["userid"]);
+    $stmt->execute();
+    $_SESSION["message"] = true;
+    header ("Location: messages.php");
 ?>
+
 
 
 

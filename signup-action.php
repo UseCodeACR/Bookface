@@ -10,7 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
     <?php include "Style/links.php"; ?>
-    <?php include "PHPFunc\db-connect";?>
+    <?php include "PHPFunc\db-connect.php";?>
     <?php include "PHPFunc\dbcheck.php";?>
 </head>
 <body>
@@ -27,7 +27,7 @@ session_start();
     $stmt = $conn->prepare($query);
     $stmt->bind_param("sss", $_POST["name"], $_POST["email"], $hash);
     $stmt->execute();
-    $_SESSION["setmessage"] = true;
+    $_SESSION["signup"] = true;
     header ("Location: index.php");
 ?>
 

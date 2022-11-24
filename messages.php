@@ -9,7 +9,8 @@ session_start()
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messages</title>
     <?php include "Style/links.php"; ?>
-    <?php include "PHPFunc\db-connect";?>
+    <?php include "PHPFunc\db-connect.php";?>
+    <?php include "PHPFunc\dbcheck.php";?>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -27,16 +28,10 @@ session_start()
             </li>
             <?php if (!isset($_SESSION['loggedin'])):?>
                 <li class="nav-item">
-                    <a class="nav-link" href="signup.php">Sign Up</a>
-                </li>
-            <?php endif;?>
-
-            <?php if (isset($_SESSION['loggedin'])):?>
-                <li class="nav-item">
                 <a class="nav-link" href="messages.php">Messages</a>
                 </li>
             <?php endif;?>
-            
+
             <?php if(isset($_SESSION['loggedin'])):?>
                 <li class="nav-item">
                     <a class="nav-link" href="account.php">Account</a>
@@ -51,6 +46,51 @@ session_start()
         </div>
     </div>
     </nav>
+
+
+    
+
+        <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form action="messages-action.php" method="post">
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <input type="text" class="form-control" id="message" name="message">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <?php
+    $conn = connect();
+    $sql = "SELECT * FROM messages LEFT JOIN users ON messages.userid = users.id ORDER BY messages.id DESC"; 
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_assoc($result)){
+        $name = $row['name'];
+        $message = $row['message'];
+        ?>
+        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto"><?=$name?></strong>
+            <small>11 mins ago</small>     
+            <span aria-hidden="true"></span>
+        </div>
+        <div class="toast-body">
+            <?=$message?>
+        </div>
+    </div>
+    <?php
+    }
+    ?>
+
+
+
+
 
 </body>
 </html>

@@ -1,9 +1,9 @@
 <?php
-include "PHPFunc\db-connect.php";
+//include "PHPFunc\db-connect.php";
 
 function dbcheck(){
-    session_start();
-    include "PHPFunc\db-connect.php";
+    //session_start();
+    //include "PHPFunc\db-connect.php";
     $conn = connect();
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
@@ -19,8 +19,8 @@ function dbcheck(){
 }
 
 function dbchecklogin(){
-    session_start();
-    include "PHPFunc\db-connect.php";
+    //session_start();
+    //include "PHPFunc\db-connect.php";
     $conn = connect();
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
@@ -30,6 +30,7 @@ function dbchecklogin(){
     $email = $result->fetch_assoc();
     if(password_verify($_POST["password"], $email["password"])){
         $_SESSION["loggedin"] = true;
+        $_SESSION["userid"] = $email["id"];
         header ("Location: index.php");
         exit();
     }else{
@@ -43,7 +44,7 @@ function dbchecklogin(){
 
 function dbpasswordcheck(){
     session_start();
-    include "PHPFunc\db-connect.php";
+    //include "PHPFunc\db-connect.php";
     $conn = connect();
     $query = "SELECT * FROM users WHERE password = ?";
     $stmt = $conn->prepare($query);
