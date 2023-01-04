@@ -73,11 +73,12 @@ session_start()
     while($row = mysqli_fetch_assoc($result)){
         $name = $row['name'];
         $message = $row['message'];
+        $date = $row['date'];
         ?>
         <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <strong class="me-auto"><?=$name?></strong>
-            <small>11 mins ago</small>     
+            <small><?=$date?></small>     
             <span aria-hidden="true"></span>
         </div>
         <div class="toast-body">
