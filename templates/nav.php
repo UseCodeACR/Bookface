@@ -1,20 +1,9 @@
 <?php
-session_start();
+$page_name = basename($_SERVER['PHP_SELF']);
+echo $page_name;
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookFace</title>
-    <?php include "Style/links.php"; ?>
-    <?php include "PHPFunc\db-connect.php";?>
-</head>
-<body>
 
-<?php /*
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">BookFace</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,20 +16,28 @@ session_start();
                 <span class="visually-hidden">(current)</span>
             </a>
             </li>
-            <?php if (!isset($_SESSION['signup'])):?>
+            <?php if (isset($_SESSION['signup'])):?>
                 <li class="nav-item">
                     <a class="nav-link" href="signup.php">Sign Up</a>
                 </li>
             <?php endif;?>
 
-            <?php if (isset($_SESSION['loggedin'])):?>
+            <?php if (!isset($_SESSION['userid'])):?>
+                <li class="nav-item">
+                <a class="nav-link" href="login.php">Login</a>
+                </li>
+            <?php endif;?>
+
+            <?php if (isset($_SESSION['userid'])):?>
                 <li class="nav-item">
                     <a class="nav-link" href="messages.php">Messages</a>
                 </li>
             <?php endif;?>
-            <li class="nav-item">
-            <a class="nav-link" href="account.php">Account</a>
-            </li>
+            <?php if(isset($_SESSION['userid'])):?>
+                <li class="nav-item">
+                    <a class="nav-link" href="account.php">Account</a>
+                </li>
+            <?php endif;?>
         </ul>
         <?php if(connect()):?>
             <span class="badge rounded-pill bg-success">Connected</span>
@@ -51,21 +48,3 @@ session_start();
         </div>
     </div>
     </nav>
-*/ ?>
-
-<?php include "templates/nav.php"; ?>
-    
-    <form action="account-action.php" method="post">
-        <button type="submit" name="logout" class="btn btn-primary" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Log Out</button>
-    </form>
-
-
-    <?php
-
-  ?>
-
-
-
-
-</body>
-</html>

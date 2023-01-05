@@ -20,6 +20,7 @@ session_start()
     $conn = connect();
     $_SESSION["loggedout"] = true;
     $_SESSION["setmessage"] = true;
+    unset($_SESSION['userid']);
     header("Location: index.php");
 ?>
 
