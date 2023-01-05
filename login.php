@@ -8,11 +8,11 @@ session_start()
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
-    <?php include "Style/links.php"; ?>
-    <?php include "PHPFunc\db-connect.php";?>
+    <?php include dirname(__FILE__)."/Style/links.php"; ?>
+    <?php include dirname(__FILE__)."/PHPFunc/db-connect.php";?>
 </head>
 <body>
-<?php include "templates/nav.php"; ?>
+<?php include dirname(__FILE__)."/templates/nav.php"; ?>
 
 
     <?php
