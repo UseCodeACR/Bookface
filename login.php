@@ -12,6 +12,9 @@ session_start()
     <?php include "PHPFunc\db-connect.php";?>
 </head>
 <body>
+<?php include "templates/nav.php"; ?>
+
+    <?php /*
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">BookFace</a>
@@ -47,6 +50,7 @@ session_start()
         </div>
     </div>
     </nav>
+    */?>
 
     <?php
 
