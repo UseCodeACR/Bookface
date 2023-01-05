@@ -13,8 +13,9 @@ session_start();
 </head>
 <body>
 <?php include "templates/nav.php"; ?>
-
+  
     <?php
+    
     if(isset($_SESSION["signup"])){
         echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
         <strong>Success!</strong> You have successfully signed up.
