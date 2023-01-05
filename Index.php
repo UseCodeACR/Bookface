@@ -31,18 +31,18 @@ session_start();
                 </li>
             <?php endif;?>
 
-            <?php if (!isset($_SESSION['loggedin'])):?>
+            <?php if (!isset($_SESSION['userid'])):?>
                 <li class="nav-item">
                 <a class="nav-link" href="login.php">Login</a>
                 </li>
             <?php endif;?>
 
-            <?php if (isset($_SESSION['loggedin'])):?>
+            <?php if (isset($_SESSION['userid'])):?>
                 <li class="nav-item">
                     <a class="nav-link" href="messages.php">Messages</a>
                 </li>
             <?php endif;?>
-            <?php if(isset($_SESSION['loggedin'])):?>
+            <?php if(isset($_SESSION['userid'])):?>
                 <li class="nav-item">
                     <a class="nav-link" href="account.php">Account</a>
                 </li>
@@ -68,7 +68,7 @@ session_start();
     }
     if(isset($_SESSION["loggedin"])){
         echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-        <strong>Success!!</strong> Your Logged In!
+        <strong>Success!!</strong> You're Logged In!
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
         </div>";
         unset($_SESSION["loggedin"]);

@@ -9,7 +9,8 @@ function connect(){
     try {
         $conn = new mysqli($servername, $username, $password, "bookface");
     }   catch (Exception $e) {
-        return false;
+        // return false;
+        echo "DB ERROR";
     }
 
     // Check connection

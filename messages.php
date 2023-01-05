@@ -11,6 +11,16 @@ session_start()
     <?php include "Style/links.php"; ?>
     <?php include "PHPFunc\db-connect.php";?>
     <?php include "PHPFunc\dbcheck.php";?>
+    <script>
+        const interval = setInterval(function() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            document.getElementById("messages").innerHTML = this.responseText;
+        };
+        xhttp.open("GET", "messages-update.php");
+        xhttp.send();
+        }, 0001);
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -66,28 +76,9 @@ session_start()
     
     
     
-    <?php
-    $conn = connect();
-    $sql = "SELECT * FROM messages LEFT JOIN users ON messages.userid = users.id ORDER BY messages.id DESC"; 
-    $result = mysqli_query($conn, $sql);
-    while($row = mysqli_fetch_assoc($result)){
-        $name = $row['name'];
-        $message = $row['message'];
-        $date = $row['date'];
-        ?>
-        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <strong class="me-auto"><?=$name?></strong>
-            <small><?=$date?></small>     
-            <span aria-hidden="true"></span>
+    <div id="messages">
+  
         </div>
-        <div class="toast-body">
-            <?=$message?>
-        </div>
-    </div>
-    <?php
-    }
-    ?>
 
 
 

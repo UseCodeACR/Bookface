@@ -1,5 +1,5 @@
 <?php
-//include "PHPFunc\db-connect.php";
+include_once "PHPFunc\db-connect.php";
 
 function dbcheck(){
     //session_start();

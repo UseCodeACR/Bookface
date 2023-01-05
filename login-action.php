@@ -1,4 +1,7 @@
 <?php
+//include "PHPFunc\db-connect.php";
+include "PHPFunc\dbcheck.php";
+
 session_start()
 ?>
 
@@ -10,15 +13,14 @@ session_start()
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
     <?php include "Style/links.php"; ?>
-    <?php include "PHPFunc\db-connect.php";?>
-    <?php include "PHPFunc\dbcheck.php";?>
+
 </head>
 <body>
     
 
 
 <?php
-    $conn = connect();
+    //$conn = connect();
     dbchecklogin();
     $_SESSION["signup"] = true;
     $_SESSION["loggedin"] = true;
