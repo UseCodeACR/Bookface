@@ -21,7 +21,7 @@ session_start()
     $_SESSION["loggedout"] = true;
     $_SESSION["setmessage"] = true;
     unset($_SESSION['userid']);
-    header("Location: /projects/Bookface/Index.php");
+    header("Location: Index.php");
     exit();
 ?>
 

@@ -19,13 +19,13 @@ session_start();
 
 <?php
     dbcheck();
-    //$conn = connect();
+    $conn = connect();
     $query = "INSERT INTO messages (message, userid) VALUES (?,?)";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("si", $_POST["message"],$_SESSION["userid"]);
     $stmt->execute();
     $_SESSION["message"] = true;
-    header ("Location: /projects/Bookface/messages.php");
+    header ("Location: messages.php");
 ?>
 
 

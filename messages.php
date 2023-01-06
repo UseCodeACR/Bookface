@@ -17,7 +17,7 @@ session_start()
         xhttp.onload = function() {
             document.getElementById("messages").innerHTML = this.responseText;
         };
-        xhttp.open("GET", "/projects/Bookface/messages-update.php");
+        xhttp.open("GET", "messages-update.php");
         xhttp.send();
         }, 0001);
     </script>

@@ -1,10 +1,12 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 //session_start();
-//include dirname(__FILE__)."/PHPFunc/db-connect.php";
+include_once dirname(__FILE__)."/db-connect.php";
 
 function dbcheck(){
     //session_start();
-    include dirname(__FILE__)."/PHPFunc/db-connect.php";
+    //include dirname(__FILE__)."/db-connect.php";
     $conn = connect();
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
@@ -21,7 +23,7 @@ function dbcheck(){
 
 function dbchecklogin(){
     //session_start();
-    //dirname(__FILE__).include "/PHPFunc\db-connect.php";
+    //dirname(__FILE__).include "/db-connect.php";
     $conn = connect();
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
