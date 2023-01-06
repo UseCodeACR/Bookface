@@ -10,18 +10,19 @@ session_start()
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
     <?php include dirname(__FILE__). "/Style/links.php"; ?>
-    <?php include dirname(__FILE__). "/PHPFunc\db-connect.php";?>
+    <?php include dirname(__FILE__). "/PHPFunc/db-connect.php";?>
 </head>
 <body>
     
 
 
 <?php
-    $conn = connect();
+    //$conn = connect();
     $_SESSION["loggedout"] = true;
     $_SESSION["setmessage"] = true;
     unset($_SESSION['userid']);
-    header("Location: index.php");
+    header("Location: /projects/Bookface/Index.php");
+    exit();
 ?>
 
 

@@ -9,15 +9,15 @@ session_start()
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messages</title>
     <?php include dirname(__FILE__). "/Style/links.php"; ?>
-    <?php include dirname(__FILE__). "/PHPFunc\db-connect.php";?>
-    <?php include dirname(__FILE__). "/PHPFunc\dbcheck.php";?>
+    <?php include dirname(__FILE__). "/PHPFunc/db-connect.php";?>
+    <?php include dirname(__FILE__). "/PHPFunc/dbcheck.php";?>
     <script>
         const interval = setInterval(function() {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
             document.getElementById("messages").innerHTML = this.responseText;
         };
-        xhttp.open("GET", "messages-update.php");
+        xhttp.open("GET", "/projects/Bookface/messages-update.php");
         xhttp.send();
         }, 0001);
     </script>

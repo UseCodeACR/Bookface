@@ -1,10 +1,10 @@
 <?php
 //session_start();
-//include_once dirname(__FILE__)."/PHPFunc/db-connect.php";
+include dirname(__FILE__)."/PHPFunc/db-connect.php";
 
 function dbcheck(){
     //session_start();
-    //include "PHPFunc\db-connect.php";
+    //include dirname(__FILE__)."/PHPFunc/db-connect.php";
     $conn = connect();
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
@@ -14,14 +14,14 @@ function dbcheck(){
     $email = $result->fetch_assoc();
     if($email){
         $_SESSION["emailverify"] = true;
-        header ("Location: /signup.php");
+        header ("Location: /projects/Bookface/signup.php");
         exit();
     }else{}
 }
 
 function dbchecklogin(){
     //session_start();
-    include "PHPFunc\db-connect.php";
+    //dirname(__FILE__).include "/PHPFunc\db-connect.php";
     $conn = connect();
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
@@ -32,11 +32,11 @@ function dbchecklogin(){
     if(password_verify($_POST["password"], $email["password"])){
         $_SESSION["loggedin"] = true;
         $_SESSION["userid"] = $email["id"];
-        header ("Location: Index.php");
+        header ("Location: /projects/Bookface/Index.php");
         exit();
     }else{
         $_SESSION["loginerror"] = true;
-        header ("Location: /login.php");
+        header ("Location: /projects/Bookface/login.php");
         exit();
     }
 }
@@ -55,7 +55,7 @@ function dbpasswordcheck(){
     $password = $result->fetch_assoc();
     if(password_verify($_POST[$password] == $password)){
         $_SESSION["passwordverify"] = true;
-        header ("Location: /signup.php");
+        header ("Location: /project/Bookface/signup.php");
         exit();
 }}
 

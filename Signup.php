@@ -25,7 +25,7 @@ session_start();
     }
     
     ?>
-
+    
     <form action="signup-action.php" method="post">
         <div class="form-group" >
             <label for="exampleInputName" class="form-label mt-4" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Name</label>
@@ -46,7 +46,7 @@ session_start();
             <a href="login.php" class="btn btn-primary form-control" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Login</a>
         </div>
     </form>
-
+    
     
     
 </body>

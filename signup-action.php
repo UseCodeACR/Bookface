@@ -10,8 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
     <?php include dirname(__FILE__). "/Style/links.php"; ?>
-    <?php include dirname(__FILE__). "/PHPFunc\db-connect.php";?>
-    <?php include dirname(__FILE__). "/PHPFunc\dbcheck.php";?>
+    <?php include dirname(__FILE__). "/PHPFunc/db-connect.php";?>
 </head>
 <body>
     
@@ -19,7 +18,7 @@ session_start();
 
 <?php
     dbcheck();
-    $conn = connect();
+    //$conn = connect();
     echo "Added: " . $_POST["name"] . " " . $_POST["email"] . "  To the database";
     $hash = $_POST["password"];
     $hash = password_hash($hash, PASSWORD_DEFAULT);
@@ -28,8 +27,11 @@ session_start();
     $stmt->bind_param("sss", $_POST["name"], $_POST["email"], $hash);
     $stmt->execute();
     $_SESSION["signup"] = true;
-    header ("Location: index.php");
-?>
+    header ("Location: /projects/Bookface/Index.php");
+    exit();
+    ?>
+
+
 
 
 
