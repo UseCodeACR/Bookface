@@ -1,7 +1,6 @@
 <?php
 session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +18,6 @@ ini_set('display_errors', '1');
 <?php include dirname(__FILE__). "/templates/nav.php"; ?>
   
     <?php
-    
     if(isset($_SESSION["signup"])){
         echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
         <strong>Success!</strong> You have successfully signed up.
