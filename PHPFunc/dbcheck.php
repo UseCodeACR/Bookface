@@ -1,11 +1,11 @@
 <?php
-sesion_start();
-include_once dirname(__FILE__)."/PHPFunc/db-connect.php";
+//session_start();
+//include_once dirname(__FILE__)."/PHPFunc/db-connect.php";
 
 function dbcheck(){
-    session_start();
+    //session_start();
     //include "PHPFunc\db-connect.php";
-    //$conn = connect();
+    $conn = connect();
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $_POST["email"]);
@@ -21,7 +21,7 @@ function dbcheck(){
 
 function dbchecklogin(){
     //session_start();
-    //include "PHPFunc\db-connect.php";
+    include "PHPFunc\db-connect.php";
     $conn = connect();
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
@@ -32,7 +32,7 @@ function dbchecklogin(){
     if(password_verify($_POST["password"], $email["password"])){
         $_SESSION["loggedin"] = true;
         $_SESSION["userid"] = $email["id"];
-        header ("www.google.com");
+        header ("Location: Index.php");
         exit();
     }else{
         $_SESSION["loginerror"] = true;

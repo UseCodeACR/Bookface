@@ -1,6 +1,6 @@
 <?php
 
-include dirname(__FILE__). "/PHPFunc\dbcheck.php";
+include dirname(__FILE__). "/PHPFunc/db-connect.php";
 
 ?>
 
