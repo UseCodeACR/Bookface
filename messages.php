@@ -8,9 +8,9 @@ session_start()
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messages</title>
-    <?php include "Style/links.php"; ?>
-    <?php include "PHPFunc\db-connect.php";?>
-    <?php include "PHPFunc\dbcheck.php";?>
+    <?php include dirname(__FILE__). "/Style/links.php"; ?>
+    <?php include dirname(__FILE__). "/PHPFunc\db-connect.php";?>
+    <?php include dirname(__FILE__). "/PHPFunc\dbcheck.php";?>
     <script>
         const interval = setInterval(function() {
         const xhttp = new XMLHttpRequest();
@@ -24,7 +24,7 @@ session_start()
 </head>
 <body>
 
-<?php include "templates/nav.php"; ?>
+<?php include dirname(__FILE__). "/templates/nav.php"; ?>
 
 <?php /*
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">

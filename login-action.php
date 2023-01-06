@@ -1,6 +1,6 @@
 <?php
-//include "PHPFunc\db-connect.php";
-include "PHPFunc\dbcheck.php";
+//include dirname(__FILE__). "PHPFunc\db-connect.php";
+include dirname(__FILE__). "/PHPFunc\dbcheck.php";
 
 session_start()
 ?>
@@ -12,7 +12,7 @@ session_start()
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
-    <?php include "Style/links.php"; ?>
+    <?php include dirname(__FILE__). "Style/links.php"; ?>
 
 </head>
 <body>
