@@ -10,16 +10,16 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
     <?php include dirname(__FILE__). "/Style/links.php"; ?>
-    <?php// include dirname(__FILE__). "/PHPFunc/db-connect.php";?>
+    <?php //include dirname(__FILE__). "/PHPFunc/db-connect.php";?>
 </head>
 <body>
     
 
 
 <?php
-    include dirname(__FILE__). "/PHPFunc/db-connect.php";
+    include dirname(__FILE__). "/PHPFunc/dbcheck.php";
     dbcheck();
-    //$conn = connect();
+    $conn = connect();
     echo "Added: " . $_POST["name"] . " " . $_POST["email"] . "  To the database";
     $hash = $_POST["password"];
     $hash = password_hash($hash, PASSWORD_DEFAULT);

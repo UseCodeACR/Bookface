@@ -1,10 +1,10 @@
 <?php
 //session_start();
-//include dirname(__FILE__)."/PHPFunc/db-connect.php";
+//include_once dirname(__FILE__)."/PHPFunc/db-connect.php";
 
 function dbcheck(){
     //session_start();
-    include dirname(__FILE__)."/PHPFunc/db-connect.php";
+    include dirname(__FILE__)."/db-connect.php";
     $conn = connect();
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
