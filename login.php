@@ -8,49 +8,14 @@ session_start()
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
-    <?php include "Style/links.php"; ?>
-    <?php include "PHPFunc\db-connect.php";?>
+    <?php include dirname(__FILE__)."/Style/links.php"; ?>
+    <?php include dirname(__FILE__)."/PHPFunc\db-connect.php";?>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">BookFace</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-            <a class="nav-link" href="index.php">Home
-                <span class="visually-hidden">(current)</span>
-            </a>
-            </li>
-            <?php if (!isset($_SESSION['loggedin'])):?>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
-                </li>
-            <?php endif;?>
-            <?php if (isset($_SESSION['loggedin'])):?>
-                <li class="nav-item">
-                <a class="nav-link" href="messages.php">Messages</a>
-                </li>
-            <?php endif;?>
-            <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-            </li>
-        </ul>
-        <?php if(connect()):?>
-            <span class="badge rounded-pill bg-success">Connected</span>
-        <?php else:?>
-            
-            <span class="badge rounded-pill bg-danger">Failed</span>
-        <?php endif;?>
-        </div>
-    </div>
-    </nav>
+
+    <?php include dirname(__FILE__). "/templates/nav.php"; ?>
 
     <?php
-
     if(isset($_SESSION["loginerror"])){
         echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
         <strong>Oops!!</strong> Incorrect Email Or Password!
