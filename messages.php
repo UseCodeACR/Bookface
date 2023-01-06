@@ -45,7 +45,37 @@ session_start()
 
     
     
-<div id="messages"></div>
+<div id="messages">
+<?php
+        $conn = connect();
+        $sql = "SELECT * FROM messages LEFT JOIN users ON messages.userid = users.id ORDER BY messages.id DESC"; 
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_assoc($result)){
+            $name = $row['name'];
+            $message = $row['message'];
+            $date = $row['date'];
+            if(substr($date,0,10) == date("Y-m-d")){
+                $date = substr($date, 11 ,5);
+            }
+            else{
+                $date = substr($date, 0, 16);
+            }
+            ?>
+            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto"><?=$name?></strong>
+                <small><?=$date?></small>     
+                <span aria-hidden="true"></span>
+            </div>
+            <div class="toast-body">
+                <?=$message?>
+            </div>
+        </div>
+        <?php
+        }
+        ?>
+
+</div>
 
 
 
