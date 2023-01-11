@@ -29,24 +29,12 @@ session_start()
 
     
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <form action="messages-action.php" method="post">
-                <div class="mb-3">
-                    <label for="message" class="form-label">Message</label>
-                    <input type="text" class="form-control" id="message" name="message">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </div>
-</div>
+
 
     
     
-<div id="messages">
-<?php
+<div id="messages" class="col-sm-4 tp-5 mx-auto">
+    <?php
         $conn = connect();
         $sql = "SELECT * FROM messages LEFT JOIN users ON messages.userid = users.id ORDER BY messages.id DESC"; 
         $result = mysqli_query($conn, $sql);
@@ -61,7 +49,7 @@ session_start()
                 $date = substr($date, 0, 16);
             }
             ?>
-            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" >
             <div class="toast-header">
                 <strong class="me-auto"><?=$name?></strong>
                 <small><?=$date?></small>     
@@ -78,7 +66,21 @@ session_start()
 </div>
 
 
+<div class="row fixed-bottom">
+    <div class="row">
+        <div style="width: 100%">
+            <form action="messages-action.php" method="post">
+                <div class="input-group" >
+                    <label for="message" class="form-label">Message</label>
+                    <input type="text" class="form-control"  id="message" name="message">
 
+                    <span type="submit" class="btn btn-primary">Submit</span>
+                </div>
+                 
+            </form>
+        </div>
+    </div>
+</div>
 
 
 </body>
