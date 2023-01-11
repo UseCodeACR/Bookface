@@ -9,15 +9,15 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookFace</title>
-    <?php include dirname(__FILE__). "/Style/links.php"; ?>
-    <?php include dirname(__FILE__). "/PHPFunc/dbcheck.php";?>
+    <?php require dirname(__FILE__). "/Style/links.php"; ?>
+    <?php require dirname(__FILE__). "/PHPFunc/dbcheck.php";?>
 </head>
 <body>
     
 
 
 <?php
-    //include dirname(__FILE__). "/PHPFunc/db-connect.php";
+    //require dirname(__FILE__). "/PHPFunc/db-connect.php";
     dbcheck();
     $conn = connect();
     echo "Added: " . $_POST["name"] . " " . $_POST["email"] . "  To the database";

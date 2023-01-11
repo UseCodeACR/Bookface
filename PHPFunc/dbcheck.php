@@ -6,7 +6,7 @@ include_once dirname(__FILE__)."/db-connect.php";
 
 function dbcheck(){
     //session_start();
-    //include dirname(__FILE__)."/db-connect.php";
+    //require dirname(__FILE__)."/db-connect.php";
     $conn = connect();
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
@@ -23,7 +23,7 @@ function dbcheck(){
 
 function dbchecklogin(){
     //session_start();
-    //dirname(__FILE__).include "/db-connect.php";
+    //dirname(__FILE__).require "/db-connect.php";
     $conn = connect();
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
@@ -47,7 +47,7 @@ function dbchecklogin(){
 
 function dbpasswordcheck(){
     //session_start();
-    //include "PHPFunc\db-connect.php";
+    //require "PHPFunc\db-connect.php";
     $conn = connect();
     $query = "SELECT * FROM users WHERE password = ?";
     $stmt = $conn->prepare($query);
