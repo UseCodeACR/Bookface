@@ -22,12 +22,6 @@ session_start();
 
 <?php require dirname(__FILE__). "/templates/nav.php"; ?>
   
-    <div class = "conatiner">
-        <img src="Images\BOOKFACE.png" class="img-fluid rounded-top" alt="" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 80%; display:block">
-    </div>
-    
-
-
 
     <?php
     if(isset($_SESSION["signup"])){
@@ -53,7 +47,22 @@ session_start();
         </div>";
         unset($_SESSION["loggedout"]);
     }
-  ?>
+
+   
+    if(isset($_SESSION["userid"])){
+        
+        echo "<div class = 'conatiner'>
+        <img src='Images\logged_in_bookface.png' class='img-fluid rounded-top' alt='' style='margin-top: 1%; margin-left: auto; margin-right: auto; width: 70%; height: 80%; display:block'>
+        </div>";
+    }
+    if(!isset($_SESSION["userid"])){
+        echo "<div class = 'conatiner'>
+        <img src='Images\BOOKFACE.png' class='img-fluid rounded-top' alt='' style='margin-top: 1%; margin-left: auto; margin-right: auto; width: 80%; display:block'>
+        </div>";
+    }
+
+    ?>
+  
 
 
 
