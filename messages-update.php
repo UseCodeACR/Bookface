@@ -34,7 +34,7 @@ require dirname(__FILE__). "/PHPFunc/db-connect.php";
                 $date = substr($date, 0, 16);
             }
             if ($row["id"] == $_SESSION["userid"] ){
-                $style = "background-color: #2780e3; font-color: #ffffff; "; 
+                $style = "background-color: #2780e3; color: #ffffff; "; 
                 $style2 = "margin: 10px; margin-left: 200px; ";
             }
             else{

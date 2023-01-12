@@ -49,7 +49,7 @@ session_start()
                 $date = substr($date, 0, 16);
             }
             if ($row["id"] == $_SESSION["userid"] ){
-                $style = "background-color: #2780E3; "; 
+                $style = "background-color: #2780E3; color: #ffffff;"; 
                 $style2 = "margin: 10px; margin-left: 200px; ";
             }
             else{

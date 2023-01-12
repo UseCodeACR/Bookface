@@ -1,6 +1,32 @@
 <?php
 $page_name = basename($_SERVER['PHP_SELF']);
-echo $page_name;
+
+
+if ($page_name == "index.php") {
+    $active_index = "active";
+} else {
+    $active = "";
+}
+if ($page_name == "signup.php") {
+    $active_signup = "active";
+} else {
+    $active = "";
+}
+if ($page_name == "login.php") {
+    $active_login = "active";
+} else {
+    $active = "";
+}
+if ($page_name == "messages.php") {
+    $active_messages = "active";
+} else {
+    $active = "";
+}
+if ($page_name == "account.php") {
+    $active_account = "active";
+} else {
+    $active = "";
+}
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -12,30 +38,30 @@ echo $page_name;
         <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-            <a class="nav-link active" href="index.php">Home
+            <a class="nav-link <?=$active_index?>" href="index.php">Home
                 <span class="visually-hidden">(current)</span>
             </a>
             </li>
-            <?php if (isset($_SESSION['signup'])):?>
-                <li class="nav-item">
-                    <a class="nav-link" href="signup.php">Sign Up</a>
+            <?php if (!isset($_SESSION['userid'])):?>
+                <li class="nav-item ">
+                    <a class="nav-link <?=$active_signup?>" href="signup.php">Sign Up</a>
                 </li>
             <?php endif;?>
 
             <?php if (!isset($_SESSION['userid'])):?>
-                <li class="nav-item">
-                <a class="nav-link" href="login.php">Login</a>
+                <li class="nav-item ">
+                <a class="nav-link <?=$active_login?>" href="login.php">Login</a>
                 </li>
             <?php endif;?>
 
             <?php if (isset($_SESSION['userid'])):?>
                 <li class="nav-item">
-                    <a class="nav-link" href="messages.php">Messages</a>
+                    <a class="nav-link <?=$active_messages?>" href="messages.php">Messages</a>
                 </li>
             <?php endif;?>
             <?php if(isset($_SESSION['userid'])):?>
                 <li class="nav-item">
-                    <a class="nav-link" href="account.php">Account</a>
+                    <a class="nav-link <?=$active_account?>" href="account.php">Account</a>
                 </li>
             <?php endif;?>
         </ul>
