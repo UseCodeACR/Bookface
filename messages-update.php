@@ -1,5 +1,5 @@
 <?php
-session_start()
+session_start();
 ?>
 <?php
 
@@ -44,6 +44,13 @@ require dirname(__FILE__). "/PHPFunc/db-connect.php";
             ?>
             <div class="toast show" role="alert" aria-live="assertive" aSria-atomic="true" style="<?= $style2 ?>">
             <div class="toast-header" style="<?= $style ?>">
+                <?php if($_SESSION["isadmin"]==true){ ?>
+                    <form action="delete-messages-action.php" method="post">       
+                        <input type='submit' value="Delete" class='btn btn-danger'></input>
+                    </form>
+                <?php
+                }    
+                ?>
                 <strong class="me-auto"><?=$name?></strong>
                 <small><?=$date?></small>     
                 <span aria-hidden="true"></span>

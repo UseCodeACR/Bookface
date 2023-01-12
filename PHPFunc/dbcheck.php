@@ -34,15 +34,40 @@ function dbchecklogin(){
     if(password_verify($_POST["password"], $email["password"])){
         $_SESSION["loggedin"] = true;
         $_SESSION["userid"] = $email["id"];
-        header ("Location: /projects/Bookface/Index.php");
-        exit();
+        //header ("Location: /projects/Bookface/Index.php");
+        echo "pass";
+        
     }else{
         $_SESSION["loginerror"] = true;
-        header ("Location: /projects/Bookface/login.php");
-        exit();
+        //header ("Location: /projects/Bookface/login.php");
+        echo "fail";
+        
     }
 }
 
+function check_admin(){
+    echo "working";
+    $conn = connect();
+    $query = "SELECT * FROM users WHERE email = '$_POST[email]'";
+    $result = mysqli_query($conn, $query);
+    $num = mysqli_num_rows($result);
+    if ($num == 1){
+        while($row = mysqli_fetch_assoc($result)){
+            $admin = $row["is_admin"];
+        }
+    
+    if($admin == 1){
+        $_SESSION["isadmin"] = true;
+        header ("Location: /projects/Bookface/Index.php");
+        exit();
+    }
+    else{
+        $_SESSION["isadmin"] = false;
+        header ("Location: /projects/Bookface/Index.php");
+        exit();
+    }
+}
+}
 
 
 function dbpasswordcheck(){
