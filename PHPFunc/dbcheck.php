@@ -35,18 +35,18 @@ function dbchecklogin(){
         $_SESSION["loggedin"] = true;
         $_SESSION["userid"] = $email["id"];
         header ("Location: /projects/Bookface/Index.php");
-        echo "pass";
+        //echo "pass";
         
     }else{
         $_SESSION["loginerror"] = true;
         header ("Location: /projects/Bookface/login.php");
-        echo "fail";
+        //echo "fail";
         
     }
 }
 
 function check_admin(){
-    echo "working";
+    //echo "working";
     $conn = connect();
     $query = "SELECT * FROM users WHERE email = '$_POST[email]'";
     $result = mysqli_query($conn, $query);
@@ -58,12 +58,12 @@ function check_admin(){
     
     if($admin == 1){
         $_SESSION["isadmin"] = true;
-        header ("Location: /projects/Bookface/Index.php");
+        //header ("Location: /projects/Bookface/Index.php");
         exit();
     }
     else{
         $_SESSION["isadmin"] = false;
-        header ("Location: /projects/Bookface/Index.php");
+        //header ("Location: /projects/Bookface/Index.php");
         exit();
     }
 }
