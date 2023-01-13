@@ -22,9 +22,7 @@ session_start()
     require dirname(__FILE__). "/PHPFunc/dbcheck.php";
     //$conn = connect();
     dbchecklogin();
-    echo "called dbchecklogin";
     check_admin();
-    echo "called check_admin";
     $_SESSION["signup"] = true;
     $_SESSION["loggedin"] = true;
     $_SESSION["userid"] = $_POST["userid"];

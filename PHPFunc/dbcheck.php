@@ -86,4 +86,17 @@ function dbpasswordcheck(){
         exit();
 }}
 
+function delete_user(){
+    $conn = connect();
+    $query = "DELETE FROM users WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $_GET["id"]);
+    $stmt->execute();
+    $_SESSION["delete_user"] = true;
+    header ("Location: /projects/Bookface/admin.php");
+    exit();
+}
+
+
+
 ?>

@@ -47,7 +47,12 @@ session_start();
         </div>";
         unset($_SESSION["loggedout"]);
     }
-
+    if(isset($_SESSION["tried-to-access-admin"])){
+        echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+        <strong>Oops!!</strong> You Cannot Acces This Page!
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>";
+    }
    
     if(isset($_SESSION["userid"])){
         
@@ -60,6 +65,9 @@ session_start();
         <img src='Images\BOOKFACE.png' class='img-fluid rounded-top' alt='' style='margin-top: 1%; margin-left: auto; margin-right: auto; width: 80%; display:block'>
         </div>";
     }
+
+
+    
 
     ?>
   

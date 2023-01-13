@@ -27,6 +27,11 @@ if ($page_name == "account.php") {
 } else {
     $active = "";
 }
+if ($page_name == "admin.php") {
+    $active_admin = "active";
+} else {
+    $active = "";
+}
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -57,6 +62,11 @@ if ($page_name == "account.php") {
             <?php if (isset($_SESSION['userid'])):?>
                 <li class="nav-item">
                     <a class="nav-link <?=$active_messages?>" href="messages.php">Messages</a>
+                </li>
+            <?php endif;?>
+            <?php if(isset($_SESSION['isadmin']) && ($_SESSION["isadmin"] == true)):?>
+                <li class="nav-item">
+                    <a class="nav-link <?=$active_admin?>" href="admin.php">Admin</a>
                 </li>
             <?php endif;?>
             <?php if(isset($_SESSION['userid'])):?>

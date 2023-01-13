@@ -21,6 +21,8 @@ session_start()
     $_SESSION["loggedout"] = true;
     $_SESSION["setmessage"] = true;
     unset($_SESSION['userid']);
+    unset($_SESSION['loggedin']);
+    unset($_SESSION['isadmin']);
     header("Location: Index.php");
     exit();
 ?>
