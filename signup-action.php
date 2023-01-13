@@ -28,7 +28,7 @@ session_start();
     $stmt->bind_param("sss", $_POST["name"], $_POST["email"], $hash);
     $stmt->execute();
     $_SESSION["signup"] = true;
-    header ("Location: Index.php");
+    header ("Location: /projects/Bookface/Index.php");
     exit();
     ?>
 

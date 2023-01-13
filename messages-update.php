@@ -18,7 +18,7 @@ require dirname(__FILE__). "/PHPFunc/db-connect.php";
 
     </head>
     <body>
-        
+
     <?php
         $conn = connect();
         $sql = "SELECT * FROM messages LEFT JOIN users ON messages.userid = users.id ORDER BY messages.id DESC"; 
@@ -34,7 +34,7 @@ require dirname(__FILE__). "/PHPFunc/db-connect.php";
                 $date = substr($date, 0, 16);
             }
             if ($row["id"] == $_SESSION["userid"] ){
-                $style = "background-color: #2780e3; color: #ffffff; "; 
+                $style = "background-color: #2780E3; color: #ffffff;"; 
                 $style2 = "margin: 10px; margin-left: 200px; ";
             }
             else{
@@ -43,16 +43,19 @@ require dirname(__FILE__). "/PHPFunc/db-connect.php";
             }
             ?>
             <div class="toast show" role="alert" aria-live="assertive" aSria-atomic="true" style="<?= $style2 ?>">
+
             <div class="toast-header" style="<?= $style ?>">
-                <?php if($_SESSION["isadmin"]==true){ ?>
-                    <form action="delete-messages-action.php" method="post">       
-                        <input type='submit' value="Delete" class='btn btn-danger'></input>
-                    </form>
-                <?php
-                }    
-                ?>
                 <strong class="me-auto"><?=$name?></strong>
-                <small><?=$date?></small>     
+                <small>
+                    <?=$date?>
+                    <?php if($_SESSION["isadmin"]==true){ ?>
+                        <form action="delete-messages-action.php" method="post">       
+                            <input type='submit' value="Delete" class='btn btn-danger'></input>
+                        </form>
+                    <?php
+                    }    
+                    ?>
+                </small>     
                 <span aria-hidden="true"></span>
             </div>
             <div class="toast-body" style="<?= $style ?>">

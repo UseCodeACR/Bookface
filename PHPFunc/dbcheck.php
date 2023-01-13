@@ -34,12 +34,12 @@ function dbchecklogin(){
     if(password_verify($_POST["password"], $email["password"])){
         $_SESSION["loggedin"] = true;
         $_SESSION["userid"] = $email["id"];
-        //header ("Location: /projects/Bookface/Index.php");
+        header ("Location: /projects/Bookface/Index.php");
         echo "pass";
         
     }else{
         $_SESSION["loginerror"] = true;
-        //header ("Location: /projects/Bookface/login.php");
+        header ("Location: /projects/Bookface/login.php");
         echo "fail";
         
     }

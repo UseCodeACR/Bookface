@@ -28,10 +28,6 @@ session_start();
 
 
     
-
-
-
-    
     
 <div id="messages" class="col-sm-4 tp-5 mx-auto">
 <?php
@@ -60,16 +56,17 @@ session_start();
             <div class="toast show" role="alert" aria-live="assertive" aSria-atomic="true" style="<?= $style2 ?>">
 
             <div class="toast-header" style="<?= $style ?>">
-                <?php if($_SESSION["isadmin"]==true){ ?>
-                    <form action="delete-messages-action.php" method="post">       
-                        <input type='submit' value="Delete" class='btn btn-danger'></input>
-                    </form>
-                <?php
-                }    
-                ?>
-
                 <strong class="me-auto"><?=$name?></strong>
-                <small><?=$date?></small>     
+                <small>
+                    <?=$date?>
+                    <?php if($_SESSION["isadmin"]==true){ ?>
+                        <form action="delete-messages-action.php" method="post">       
+                            <input type='submit' value="Delete" class='btn btn-danger'></input>
+                        </form>
+                    <?php
+                    }    
+                    ?>
+                </small>     
                 <span aria-hidden="true"></span>
             </div>
             <div class="toast-body" style="<?= $style ?>">
