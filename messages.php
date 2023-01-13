@@ -61,7 +61,7 @@ session_start();
                     <?=$date?>
                     <?php if($_SESSION["isadmin"]==true){ ?>
                         <form action="delete-messages-action.php" method="post">       
-                            <input type='submit' value="Delete" class='btn btn-danger'></input>
+                            <input type='submit' href="delete-messages-action.php?id=<?= $row["userid"] ?>" value="Delete" class='btn btn-danger'></input>
                         </form>
                     <?php
                     }    

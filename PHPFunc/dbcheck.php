@@ -97,6 +97,16 @@ function delete_user(){
     exit();
 }
 
+function delete_messages(){
+    $conn = connect();
+    $query = "DELETE FROM messages WHERE userid = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $_GET["userid"]);
+    $stmt->execute();
+    $_SESSION["delete_message"] = true;
+    header ("Location: /projects/Bookface/messages.php");
+    exit();
+}
 
 
 ?>

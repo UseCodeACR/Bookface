@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookface</title>
-</head>
-<body>
-    
-    <?php 
-    
-    ?>
+<?php
+
+require dirname(__FILE__). "/PHPFunc/db-connect.php";
+require dirname(__FILE__). "/PHPFunc/dbcheck.php";
+require dirname(__FILE__). "/Style/links.php";
 
 
-</body>
-</html>
+delete_messages();
+
+
+header ("Location: /projects/Bookface/messages.php");
+
+?>
