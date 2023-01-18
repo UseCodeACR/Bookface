@@ -99,6 +99,7 @@ if(isset($_SESSION["isadmin"]) && $_SESSION["isadmin"] == true){
         <td><?= $row["name"] ?></td>
         <td><?= $row["email"] ?></td>
         <td><?= $row["is_admin"] ?></td>
+        <td><a href="edit.php?
         <td> <a href="delete-user.php?id=<?= $row["id"] ?>"> Delete </a> </td>
     </tr>
 <?php endwhile; ?>
