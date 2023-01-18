@@ -49,7 +49,6 @@ session_start();
 
     h1 {
         text-align: center;
-        border: solid black;
         background: #2780E3;
         color: white;
     }
@@ -68,6 +67,7 @@ session_start();
             <th> Name </th>
             <th> Email </th>
             <th> IsAdmin </th>
+            <th> Edit </th>
             <th> Delete </th>
         </tr>
     </center>
@@ -99,8 +99,8 @@ if(isset($_SESSION["isadmin"]) && $_SESSION["isadmin"] == true){
         <td><?= $row["name"] ?></td>
         <td><?= $row["email"] ?></td>
         <td><?= $row["is_admin"] ?></td>
-        <td><a href="edit.php?
-        <td> <a href="delete-user.php?id=<?= $row["id"] ?>"> Delete </a> </td>
+        <td><a href="edit-user.php?id=<?= $row["id"] ?>"> Edit </a> </td>
+        <td><a href="delete-user.php?id=<?= $row["id"] ?>"> Delete </a> </td>
     </tr>
 <?php endwhile; ?>
 
