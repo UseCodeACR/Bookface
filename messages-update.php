@@ -19,52 +19,51 @@ require dirname(__FILE__). "/PHPFunc/db-connect.php";
     </head>
     <body>
 
-    
     <?php
-    $conn = connect();
-    $sql = "SELECT * FROM messages LEFT JOIN users ON messages.userid = users.id ORDER BY messages.id DESC"; 
-    $result = mysqli_query($conn, $sql);
-    while($row = mysqli_fetch_assoc($result)){
-        $name = $row['name'];
-        $message = $row['message'];
-        $date = $row['date'];
-        if(substr($date,0,10) == date("Y-m-d")){
-            $date = substr($date, 11 ,5);
-        }
-        else{
-            $date = substr($date, 0, 16);
-        }
-        if ($row["id"] == $_SESSION["userid"] ){
-            $style = "background-color: #2780E3; color: #ffffff;"; 
-            $style2 = "margin: 10px; margin-left: 200px; ";
-        }
-        else{
-            $style = "background-color: #eeeeee;";
-            $style2 = "margin: 10px; margin-right: 200px;";
+        $conn = connect();
+        $sql = "SELECT messages.id AS msg_id, name, message, date, userid FROM messages LEFT JOIN users ON messages.userid = users.id ORDER BY messages.id DESC"; 
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_assoc($result)){
+            $name = $row['name'];
+            $message = $row['message'];
+            $date = $row['date'];
+            if(substr($date,0,10) == date("Y-m-d")){
+                $date = substr($date, 11 ,5);
+            }
+            else{
+                $date = substr($date, 0, 16);
+            }
+            if ($row["userid"] == $_SESSION["userid"] ){
+                $style = "background-color: #2780E3; color: #ffffff;"; 
+                $style2 = "margin: 10px; margin-left: 200px; ";
+            }
+            else{
+                $style = "background-color: #eeeeee;";
+                $style2 = "margin: 10px; margin-right: 200px;";
+            }
+            ?>
+            <div class="toast show" role="alert" aria-live="assertive" aSria-atomic="true" style="<?= $style2 ?>">
+
+            <div class="toast-header" style="<?= $style ?>">
+                <strong class="me-auto"><?=$name?></strong>
+                <small>
+                    <?=$date?>
+                    <?php if($_SESSION["isadmin"]==true){ ?>
+                        <form action="delete-messages-action.php?id=<?= $row["msg_id"] ?>" method="post">       
+                            <input type='submit' value="Delete" class='btn btn-danger'></input>
+                        </form>
+                    <?php
+                    }    
+                    ?>
+                </small>     
+                <span aria-hidden="true"></span>
+            </div>
+            <div class="toast-body" style="<?= $style ?>">
+                <?=$message?>
+            </div>
+        </div>
+        <?php
         }
         ?>
-        <div class="toast show" role="alert" aria-live="assertive" aSria-atomic="true" style="<?= $style2 ?>">
-
-        <div class="toast-header" style="<?= $style ?>">
-            <strong class="me-auto"><?=$name?></strong>
-            <small>
-                <?=$date?>
-                <?php if($_SESSION["isadmin"]==true){ ?>
-                    <form action="delete-messages-action.php" method="post">       
-                        <input type='submit' href="delete-messages-action.php?id=<?= $row["userid"] ?>" value="Delete" class='btn btn-danger'></input>
-                    </form>
-                <?php
-                }    
-                ?>
-            </small>     
-            <span aria-hidden="true"></span>
-        </div>
-        <div class="toast-body" style="<?= $style ?>">
-            <?=$message?>
-        </div>
-    </div>
-    <?php
-    }
-    ?>
     </body>
     </html>

@@ -8,6 +8,7 @@ require dirname(__FILE__). "/Style/links.php";
 delete_messages();
 
 
-header ("Location: /projects/Bookface/messages.php");
+
+//header ("Location: /projects/Bookface/messages.php");
 
 ?>

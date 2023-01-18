@@ -82,10 +82,10 @@ if ($page_name == "edit-user.php") {
                 </li>
             <?php endif;?>
 
-            <?php if($active_edit == "active") :?>
+            <?php if($page_name == "edit-user.php") :?>
                 <h1>Edit <?= $row["name"] ?></h1>
             <?php endif; ?>
-            
+
         </ul>
         <?php if(connect()):?>
             <span class="badge rounded-pill bg-success">Connected</span>
