@@ -21,7 +21,7 @@ session_start();
         };
         xhttp.open("GET", "messages-update.php");
         xhttp.send();
-        }, 10000000);
+        }, 1);
     </script>
 </head>
 <body>
@@ -105,7 +105,7 @@ session_start();
             <form action="messages-action.php" method="post">
                 <div class="input-group" >
                     
-                    <input type="text" class="form-control" placeholder="Message"  id="message" name="message" >
+                    <input type="text" class="form-control" placeholder="Message"  id="message" name="message"  >
 
                     <span> <button type="submit" class="btn btn-primary">Submit</span>
                 </div>

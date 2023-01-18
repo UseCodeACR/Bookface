@@ -22,6 +22,9 @@ session_start();
         $_SESSION["no_input_message"] = true;
         header ("Location: messages.php");
     }
+
+
+
     else{
         dbcheck();
         $conn = connect();

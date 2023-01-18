@@ -18,11 +18,12 @@ session_start()
 
 <?php
     //$conn = connect();
+    
+    //unset($_SESSION['userid']);
+    //unset($_SESSION['loggedin']);
+    //unset($_SESSION['isadmin']);
+    session_destroy();
     $_SESSION["loggedout"] = true;
-    $_SESSION["setmessage"] = true;
-    unset($_SESSION['userid']);
-    unset($_SESSION['loggedin']);
-    unset($_SESSION['isadmin']);
     header("Location: Index.php");
     exit();
 ?>
