@@ -12,7 +12,6 @@
     <?php require dirname(__FILE__). "/Style/links.php"; ?>
     <?php require dirname(__FILE__). "/PHPFunc/db-connect.php";?>
     <?php require dirname(__FILE__). "/PHPFunc/dbcheck.php";?>
-    <?php require dirname(__FILE__). "/PHPFunc/email.php";?>
 </head>
 <body>
     <?php require dirname(__FILE__). "/templates/nav.php"; ?>    
