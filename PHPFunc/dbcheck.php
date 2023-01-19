@@ -1,12 +1,10 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-//session_start();
+session_start();
 include_once dirname(__FILE__)."/db-connect.php";
 
 function dbcheck(){
     //session_start();
-    //require dirname(__FILE__)."/db-connect.php";
+    require dirname(__FILE__)."/email.php";
     $conn = connect();
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);

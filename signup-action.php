@@ -20,28 +20,18 @@ session_start();
 <?php
     //require dirname(__FILE__). "/PHPFunc/db-connect.php";
     dbcheck();
-    email($_POST["email"], $_POST["name"]);
-    $email = $_POST["email"];
-    $name = $_POST["name"];
-    if($_SESSION["authnumber"] == $_POST["enterauth"]){
-        $conn = connect();
-        echo "Added: " . $_POST["name"] . " " . $_POST["email"] . "  To the database";
-        $hash = $_POST["password"];
-        $hash = password_hash($hash, PASSWORD_DEFAULT);
-        $query = "INSERT INTO users (name, email, password) VALUES (?,?,?)";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("sss", $name, $email, $hash);
-        $stmt->execute();
-        $_SESSION["signup"] = true;
-        header ("Location: /projects/Bookface/Index.php");
-        exit();
-    }
-    else{
-        $_SESSION["wrong_auth"] = true;
-        header ("Location: /projects/Bookface/signup-verify.php");
-
-    }
-
+    header ("Location: /projects/Bookface/PHPFunc/email.php");
+    $conn = connect();
+    echo "Added: " . $_POST["name"] . " " . $_POST["email"] . "  To the database";
+    $hash = $_POST["password"];
+    $hash = password_hash($hash, PASSWORD_DEFAULT);
+    $query = "INSERT INTO users (name, email, password) VALUES (?,?,?)";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("sss", $_POST["name"], $_POST["email"], $hash);
+    $stmt->execute();
+    $_SESSION["signup"] = true;
+    header ("Location: /projects/Bookface/Index.php");
+    exit();
     ?>
 
 

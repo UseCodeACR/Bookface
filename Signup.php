@@ -26,7 +26,7 @@ session_start();
     
     ?>
     
-    <form action="signup-action.php" method="post">
+    <form action="/projects/Bookface/signup-action.php" method="post">
         <div class="form-group" >
             <label for="exampleInputName" class="form-label mt-4" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Name</label>
             <input type="text" name="name" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter Name" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%;" required>
