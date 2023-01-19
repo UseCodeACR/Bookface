@@ -15,7 +15,10 @@ session_start();
 </head>
 <body>
     
-
+     
+<form action="email-func.php" method="post">
+        <button type="submit" name="logout" class="btn btn-primary" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Email</button>
+</form>
 
 
 

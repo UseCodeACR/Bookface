@@ -11,6 +11,7 @@ session_start();
     <title>BookFace</title>
     <?php require dirname(__FILE__). "/Style/links.php"; ?>
     <?php require dirname(__FILE__). "/PHPFunc/dbcheck.php";?>
+    <?php require dirname(__FILE__). "/PHPFunc/email.php";?>
 </head>
 <body>
     
@@ -19,6 +20,7 @@ session_start();
 <?php
     //require dirname(__FILE__). "/PHPFunc/db-connect.php";
     dbcheck();
+    email($_POST["email"], $_POST["name"]);
     $conn = connect();
     echo "Added: " . $_POST["name"] . " " . $_POST["email"] . "  To the database";
     $hash = $_POST["password"];
