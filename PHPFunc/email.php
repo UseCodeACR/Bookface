@@ -1,4 +1,5 @@
 <?php
+    session_start();
     //Import PHPMailer classes into the global namespace
     //These must be at the top of your script, not inside a function
     use PHPMailer\PHPMailer\PHPMailer;
@@ -10,15 +11,15 @@
     require 'PHPMailer/src/SMTP.php';
 
 function authnumber(){
-    $authnumber = rand(100000, 999999);
-    return $authnumber;
-    email($authnumber);
+
 }
 
 function email($email, $name, $authnumber){
     //Create an instance; passing `true` enables exceptions
     $mail = new PHPMailer(true);
     
+    $authnumber = rand(100000, 999999);
+
     try {
         //Server settings
         //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
@@ -49,8 +50,9 @@ function email($email, $name, $authnumber){
         $mail->send();
 
 
-        
+        header ("Location: /projects/Bookface/PHPFunc/signup-verify.php");
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
+

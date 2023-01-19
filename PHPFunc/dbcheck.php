@@ -16,7 +16,7 @@ function dbcheck(){
     $email = $result->fetch_assoc();
     if($email){
         $_SESSION["emailverify"] = true;
-        header ("Location: /projects/Bookface/signup.php");
+        header ("Location: /projects/Bookface/signup-action.php");
         exit();
     }else{}
 }
