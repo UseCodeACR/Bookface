@@ -24,6 +24,8 @@
             </div>";
             unset($_SESSION["wrong_auth"]);
         }
+
+    $_SESSION["visited-verify"];
     ?>
 
     <form action="signup-action.php" method="post">
