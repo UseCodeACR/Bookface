@@ -82,7 +82,15 @@ if ($page_name == "edit-user.php") {
                 </li>
             <?php endif;?>
 
+
         </ul>
+        <?php if(isset($_SESSION['userid'])):?>
+            
+                <form action="account-action.php" method="post">           
+                    <button type="submit" name="logout" class="btn btn-danger" style="scale: 70%">Log Out</button>
+                </form>
+            
+        <?php endif;?>
         <?php if(connect()):?>
             <span class="badge rounded-pill bg-success">Connected</span>
         <?php else:?>
