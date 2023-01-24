@@ -28,9 +28,10 @@ session_start();
     else{
         dbcheck();
         $conn = connect();
+        $message_clean = strip_tags($_POST["message"], '<br>');
         $query = "INSERT INTO messages (message, userid) VALUES (?,?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("si", $_POST["message"],$_SESSION["userid"]);
+        $stmt->bind_param("si", $message_clean,$_SESSION["userid"]);
         $stmt->execute();
         $_SESSION["message"] = true;
         header ("Location: messages.php");
