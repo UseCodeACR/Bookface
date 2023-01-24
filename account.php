@@ -19,6 +19,10 @@ session_start();
         <button type="submit" name="logout" class="btn btn-primary" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Log Out</button>
     </form>
 
+    <form action="account-edit.php" method="post">
+        <button type="submit" name="editdetails" class="btn btn-primary" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Edit Details</button>
+    </form>
+
 
     <?php
 

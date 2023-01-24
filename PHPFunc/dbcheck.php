@@ -90,7 +90,7 @@ function delete_user(){
     $stmt->execute();
     $_SESSION["delete_user"] = true;
     header ("Location: /projects/Bookface/admin.php");
-    exit();
+    
 }
 
 function delete_messages(){
@@ -101,8 +101,6 @@ function delete_messages(){
     $stmt->execute();
     $_SESSION["delete_message"] = true;
     header ("Location: /projects/Bookface/messages.php");
-    exit();
+    
 }
 
-
-?>
