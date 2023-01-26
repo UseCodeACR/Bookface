@@ -19,27 +19,18 @@ session_start()
     
 <?php
 
+
 $conn = connect();
 $hash = $_POST["password"];
-$userid = $_SESSION["userid"];
 $hash = password_hash($hash, PASSWORD_DEFAULT);
-$query = "UPDATE users SET name=?, email=?, password=?, WHERE id= $userid";
+$query = "UPDATE users SET name=?, password=? WHERE id=?";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("sssi", $_POST["name"], $_POST["email"], $hash, $_POST["id"]);
+$stmt->bind_param("ssi", $_POST["name"], $hash, $_POST["id"]);
 $stmt->execute();
+
+$_SESSION["updated"] = true;
 
 header ("Location: /projects/Bookface/account.php");
-
-
-$conn = connect();
-$hash = $_POST["password"];
-$hash = password_hash($hash, PASSWORD_DEFAULT);
-$query = "UPDATE users SET name=?, email=?, password=?, WHERE id=?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("sssii", $_POST["name"], $_POST["email"], $hash, $_POST["id"]);
-$stmt->execute();
-
-
 
 ?>
 

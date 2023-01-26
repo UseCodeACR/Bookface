@@ -21,7 +21,7 @@ session_start();
         };
         xhttp.open("GET", "messages-update.php");
         xhttp.send();
-        }, 1);
+        }, 1000);
     </script>
 </head>
 <body>

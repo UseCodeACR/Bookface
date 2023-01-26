@@ -52,10 +52,9 @@ $row = $result->fetch_assoc();
     }
 ?>
 
-    <h1> Edit Users In Database (Admin) </h1>
-
-
-    <h1>Edit <?= $row["name"] ?></h1>
+    <div class="form-group">
+        <span class ="primary form-control" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block; text-align: center"> Edit User Details (Admin) </span>
+    </div>
 
 
 

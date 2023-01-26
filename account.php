@@ -15,6 +15,16 @@ session_start();
 
 <?php require dirname(__FILE__). "/templates/nav.php"; ?>
 
+    <?php
+        if(isset($_SESSION["updated"])){
+            echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+            <strong>Success!!</strong> You Have Updated Your Details!
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>";
+            unset($_SESSION["updated"]);
+        }
+    ?>
+
     <form action="account-action.php" method="post">
         <button type="submit" name="logout" class="btn btn-primary" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Log Out</button>
     </form>

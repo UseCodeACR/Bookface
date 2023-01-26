@@ -89,14 +89,19 @@ if ($page_name == "edit-user.php") {
                 <form action="account-action.php" method="post">           
                     <button type="submit" name="logout" class="btn btn-danger" style="scale: 70%">Log Out</button>
                 </form>
-            
-        <?php endif;?>
-        <?php if(connect()):?>
-            <span class="badge rounded-pill bg-success">Connected</span>
-        <?php else:?>
-            <span class="badge rounded-pill bg-danger">Failed</span>
-        <?php endif;?>
         
+        <?php endif;?>
+
+        <?php if(isset($_SESSION["isadmin"])):?>
+            <?php if($_SESSION["isadmin"] == true):?>
+                <?php if(connect()):?>
+                    <span class="badge rounded-pill bg-success">Connected</span>
+                <?php else:?>
+                    <span class="badge rounded-pill bg-danger">Failed</span>
+                <?php endif;?>
+            <?php endif;?>
+        <?php endif;?>
+
         </div>
     </div>
     </nav>
