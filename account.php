@@ -12,12 +12,18 @@ session_start();
     <?php require dirname(__FILE__). "/PHPFunc/db-connect.php";?>
 
     <style>
-        .avatar {
+
+        .avatar{
+            margin-top: 1%;
+            margin-left: auto;
+            margin-right: auto;
+            width: 20%;
+            display:block;
             vertical-align: middle;
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            }
+        }
     </style>
 </head>
 <body>
@@ -35,7 +41,7 @@ session_start();
     ?>
 
     
-    <img src="avatar.png" alt="Avatar" class="avatar">
+    <img src="Images\avatar.png" alt="Avatar" class="avatar"  >
 
 
 
