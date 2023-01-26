@@ -52,6 +52,7 @@ session_start();
         <strong>Oops!!</strong> You Cannot Acces This Page!
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
         </div>";
+        unset($_SESSION["tried-to-access-admin"]);
     }
    
     if(isset($_SESSION["userid"])){

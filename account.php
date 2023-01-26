@@ -10,6 +10,15 @@ session_start();
     <title>BookFace</title>
     <?php require dirname(__FILE__). "/Style/links.php"; ?>
     <?php require dirname(__FILE__). "/PHPFunc/db-connect.php";?>
+
+    <style>
+        .avatar {
+            vertical-align: middle;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            }
+    </style>
 </head>
 <body>
 
@@ -24,6 +33,19 @@ session_start();
             unset($_SESSION["updated"]);
         }
     ?>
+
+    
+    <img src="avatar.png" alt="Avatar" class="avatar">
+
+
+
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+    <label for="exampleInputEmail1" class="form-label mt-4" class="form-label mt-4" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 10%; display:block">Select An Image To Upload</label>
+        <input type="file" name="fileToUpload" id="fileToUpload" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 10%; display:block" >
+        <input type="submit" value="Upload Image" name="submit" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 10%; display:block">
+    </form>
+
+
 
     <form action="account-action.php" method="post">
         <button type="submit" name="logout" class="btn btn-primary" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Log Out</button>
