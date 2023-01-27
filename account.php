@@ -17,12 +17,14 @@ session_start();
             margin-top: 1%;
             margin-left: auto;
             margin-right: auto;
-            width: 20%;
+            width: 10%;
             display:block;
             vertical-align: middle;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            width: 10%;
+            height: 10%;
+            border-radius: 100%;
+            border-style: solid;
+            border-color: black;
         }
     </style>
 </head>
@@ -41,8 +43,23 @@ session_start();
     ?>
 
     
-    <img src="Images\avatar.png" alt="Avatar" class="avatar"  >
-
+    <?php if(file_exists("pfp-images/".$_SESSION["userid"] . ".jpg")){
+        $pfp = $_SESSION["userid"] . ".jpg";?>
+        <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 
+    } 
+    else if(file_exists("pfp-images/".$_SESSION["userid"] . ".png")){
+        $pfp = $_SESSION["userid"] . ".png";?>
+        <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 
+    } 
+    else if(file_exists("pfp-images/".$_SESSION["userid"] . ".gif")){
+        $pfp = $_SESSION["userid"] . ".gif";?>
+        <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 
+    } 
+    else {
+        echo "<img src='Images/avatar.png' alt='Avatar' class='avatar'  >";
+        echo $_SESSION["userid"];
+    }
+    ?>
 
 
     <form action="upload.php" method="post" enctype="multipart/form-data">
