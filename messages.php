@@ -23,6 +23,23 @@ session_start();
         xhttp.send();
         }, 1000);
     </script>
+
+    <style>
+
+
+    .avatar{
+        
+        width: 20%;
+        height: 20%;
+        border-radius: 50%;
+        margin-left: 1%;
+        margin-right: 1%;
+        float: left;
+        border-style: solid;
+        border-color: black;
+    }
+    </style>
+
 </head>
 <body>
 
@@ -58,6 +75,23 @@ session_start();
             <div class="toast show" role="alert" aria-live="assertive" aSria-atomic="true" style="<?= $style2 ?>">
 
             <div class="toast-header" style="<?= $style ?>">
+            <?php if(file_exists("pfp-images/".$_SESSION["userid"] . ".jpg")){
+                $pfp = $_SESSION["userid"] . ".jpg";?>
+                <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 
+            } 
+            else if(file_exists("pfp-images/".$_SESSION["userid"] . ".png")){
+                $pfp = $_SESSION["userid"] . ".png";?>
+                <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 
+            } 
+            else if(file_exists("pfp-images/".$_SESSION["userid"] . ".gif")){
+                $pfp = $_SESSION["userid"] . ".gif";?>
+                <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 
+            } 
+            else {
+                echo "<img src='Images/avatar.png' alt='Avatar' class='avatar'  >";
+                echo $_SESSION["userid"];
+            }
+            ?>
                 <strong class="me-auto"><?=$name?></strong>
                 <small>
                     <?=$date?>

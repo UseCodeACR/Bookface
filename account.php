@@ -40,9 +40,28 @@ session_start();
             </div>";
             unset($_SESSION["updated"]);
         }
+    
+    
+    $pfp_jpg = $_SESSION["userid"] . ".jpg";
+    $pfp_png = $_SESSION["userid"] . ".png";
+    $pfp_gif = $_SESSION["userid"] . ".gif";
+
+    if(file_exists("php-images/".$pfp_jpg)){
+        unlink("php-images/".$pfp_png);
+        unlink("php-images/".$pfp_gif);
+    }
+    else if(file_exists("php-images/".$pfp_png)){
+        unlink("php-images/".$pfp_jpg);
+        unlink("php-images/".$pfp_gif);
+    }
+    else if(file_exists("php-images/".$pfp_gif)){
+        unlink("php-images/".$pfp_png);
+        unlink("php-images/".$pfp_jpg);
+    }
+
+
     ?>
 
-    
     <?php if(file_exists("pfp-images/".$_SESSION["userid"] . ".jpg")){
         $pfp = $_SESSION["userid"] . ".jpg";?>
         <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 

@@ -34,6 +34,24 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
   $uploadOk = 0;
 }
 $target_file = $target_dir . $_SESSION["userid"] . "." . $imageFileType;
+
+$pfp_jpg = $target_file;
+$pfp_png = $target_file;
+$pfp_gif = $target_file;
+
+if(file_exists("php-images/".$pfp_jpg)){
+    unlink("php-images/".$pfp_png);
+    unlink("php-images/".$pfp_gif);
+}
+else if(file_exists("php-images/".$pfp_png)){
+    unlink("php-images/".$pfp_jpg);
+    unlink("php-images/".$pfp_gif);
+}
+else if(file_exists("php-images/".$pfp_gif)){
+    unlink("php-images/".$pfp_png);
+    unlink("php-images/".$pfp_jpg);
+}
+
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
   echo "Sorry, your file was not uploaded.";
@@ -46,4 +64,10 @@ if ($uploadOk == 0) {
     echo "Sorry, there was an error uploading your file.";
   }
 }
+
+
+
+
+
+
 ?>
