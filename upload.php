@@ -1,6 +1,6 @@
 <?php
-
 session_start();
+require dirname(__FILE__). "/PHPFunc/dbcheck.php";
 
 $target_dir = "C:/xampp/htdocs/projects/Bookface/pfp-images/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -33,32 +33,19 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
   $uploadOk = 0;
 }
-$target_file = $target_dir . $_SESSION["userid"] . "." . $imageFileType;
 
-$pfp_jpg = $target_file;
-$pfp_png = $target_file;
-$pfp_gif = $target_file;
 
-if(file_exists("php-images/".$pfp_jpg)){
-    unlink("php-images/".$pfp_png);
-    unlink("php-images/".$pfp_gif);
-}
-else if(file_exists("php-images/".$pfp_png)){
-    unlink("php-images/".$pfp_jpg);
-    unlink("php-images/".$pfp_gif);
-}
-else if(file_exists("php-images/".$pfp_gif)){
-    unlink("php-images/".$pfp_png);
-    unlink("php-images/".$pfp_jpg);
-}
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-  echo "Sorry, your file was not uploaded.";
+    echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
+    $target_file = $target_dir . $_SESSION["userid"] . "." . $imageFileType;
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+    $_SESSION["file_type"] = $imageFileType;
+    file_type_upload();
     header("Location: /projects/Bookface/account.php");
   } else {
     echo "Sorry, there was an error uploading your file.";

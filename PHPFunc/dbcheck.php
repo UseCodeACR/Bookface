@@ -104,3 +104,11 @@ function delete_messages(){
     
 }
 
+function file_type_upload(){
+    $filetype = $_SESSION["file_type"];
+    $conn = connect();
+    $query = "INSERT INTO users (ft) VALUES (?)";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $filetype);
+    $stmt->execute();
+}

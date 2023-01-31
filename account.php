@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION["userid"])){
+    header ("Location: /projects/Bookface/login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,22 +46,7 @@ session_start();
         }
     
     
-    $pfp_jpg = $_SESSION["userid"] . ".jpg";
-    $pfp_png = $_SESSION["userid"] . ".png";
-    $pfp_gif = $_SESSION["userid"] . ".gif";
 
-    if(file_exists("php-images/".$pfp_jpg)){
-        unlink("php-images/".$pfp_png);
-        unlink("php-images/".$pfp_gif);
-    }
-    else if(file_exists("php-images/".$pfp_png)){
-        unlink("php-images/".$pfp_jpg);
-        unlink("php-images/".$pfp_gif);
-    }
-    else if(file_exists("php-images/".$pfp_gif)){
-        unlink("php-images/".$pfp_png);
-        unlink("php-images/".$pfp_jpg);
-    }
 
 
     ?>

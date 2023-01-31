@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if(!isset($_SESSION["userid"])){
+    header ("Location: /projects/Bookface/login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +39,7 @@ session_start();
         border-radius: 50%;
         margin-left: 1%;
         margin-right: 1%;
-        float: left;
+        
         border-style: solid;
         border-color: black;
     }
