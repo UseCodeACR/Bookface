@@ -107,8 +107,7 @@ function delete_messages(){
 function file_type_upload(){
     $filetype = $_SESSION["file_type"];
     $conn = connect();
-    $query = "UPDATE users (ft, id) VALUES (?,?)";
+    $query = "UPDATE users SET ft = '$filetype' WHERE id = '$_SESSION[userid]'";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("si", $filetype, $_SESSION["userid"]);
     $stmt->execute();
 }

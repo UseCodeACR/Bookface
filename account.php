@@ -24,9 +24,9 @@ if(!isset($_SESSION["userid"])){
             width: 10%;
             display:block;
             vertical-align: middle;
-            width: 10%;
-            height: 10%;
-            border-radius: 100%;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
             border-style: solid;
             border-color: black;
         }
@@ -46,26 +46,26 @@ if(!isset($_SESSION["userid"])){
         }
     
     
-
+        function get_ft(){
+            $conn = connect();
+            $query = "SELECT ft FROM users WHERE id = $_SESSION[userid]";
+            $stmt = $conn->prepare($query);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            $_SESSION["dbft"] = $row["ft"];
+        }
 
 
     ?>
 
-    <?php if(file_exists("pfp-images/".$_SESSION["userid"] . ".jpg")){
-        $pfp = $_SESSION["userid"] . ".jpg";?>
-        <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 
-    } 
-    else if(file_exists("pfp-images/".$_SESSION["userid"] . ".png")){
-        $pfp = $_SESSION["userid"] . ".png";?>
-        <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 
-    } 
-    else if(file_exists("pfp-images/".$_SESSION["userid"] . ".gif")){
-        $pfp = $_SESSION["userid"] . ".gif";?>
-        <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 
-    } 
-    else {
+    <?php
+    get_ft();
+    if($_SESSION["dbft"] == ""){
         echo "<img src='Images/avatar.png' alt='Avatar' class='avatar'  >";
-        echo $_SESSION["userid"];
+    }else{
+        $pfp = $_SESSION["userid"] . "." . "$_SESSION[dbft]";?>
+        <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 
     }
     ?>
 
