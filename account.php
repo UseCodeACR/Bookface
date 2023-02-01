@@ -71,21 +71,22 @@ if(!isset($_SESSION["userid"])){
 
 
     <form action="upload.php" method="post" enctype="multipart/form-data">
-    <label for="exampleInputEmail1" class="form-label mt-4" class="form-label mt-4" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 10%; display:block">Select An Image To Upload</label>
-        <input type="file" name="fileToUpload" id="fileToUpload" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 10%; display:block" >
+        <label class="form-label mt-4" class="form-label mt-4" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 10%; display:block">Select image to upload</label>
+        <input type="file" name="fileToUpload" id="fileToUpload" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 10%; display:block">
         <input type="submit" value="Upload Image" name="submit" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 10%; display:block">
     </form>
 
 
 
-    <form action="account-action.php" method="post">
-        <button type="submit" name="logout" class="btn btn-primary" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Log Out</button>
-    </form>
+
 
     <form action="account-edit.php" method="post">
         <button type="submit" name="editdetails" class="btn btn-primary" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Edit Details</button>
     </form>
 
+    <form action="account-action.php" method="post">
+        <button type="submit" name="logout" class="btn btn-danger" style="margin-top: 1%; margin-left: auto; margin-right: auto; width: 20%; display:block">Log Out</button>
+    </form>
 
     <?php
 

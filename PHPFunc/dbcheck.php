@@ -110,4 +110,5 @@ function file_type_upload(){
     $query = "UPDATE users SET ft = '$filetype' WHERE id = '$_SESSION[userid]'";
     $stmt = $conn->prepare($query);
     $stmt->execute();
+    unset($_SESSION["file_type"]);
 }

@@ -24,8 +24,8 @@ require dirname(__FILE__). "/PHPFunc/db-connect.php";
 
         .avatar{
             
-            width: 20%;
-            height: 20%;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             margin-left: 1%;
             margin-right: 1%;
@@ -39,6 +39,20 @@ require dirname(__FILE__). "/PHPFunc/db-connect.php";
     <body>
 
     <?php
+        function get_ft($userid){
+            $conn = connect();
+            $query = "SELECT ft FROM users WHERE id = $userid";
+            $stmt = $conn->prepare($query);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            //$_SESSION["dbft"] = $row["ft"];
+            return $row["ft"];
+        }
+        ?>
+
+
+        <?php
         $conn = connect();
         $sql = "SELECT messages.id AS msg_id, name, message, date, userid FROM messages LEFT JOIN users ON messages.userid = users.id ORDER BY messages.id DESC"; 
         $result = mysqli_query($conn, $sql);
@@ -60,27 +74,21 @@ require dirname(__FILE__). "/PHPFunc/db-connect.php";
                 $style = "background-color: #eeeeee;";
                 $style2 = "margin: 10px; margin-right: 200px;";
             }
+        
             ?>
             <div class="toast show" role="alert" aria-live="assertive" aSria-atomic="true" style="<?= $style2 ?>">
 
             <div class="toast-header" style="<?= $style ?>">
-            <?php if(file_exists("pfp-images/".$_SESSION["userid"] . ".jpg")){
-                $pfp = $_SESSION["userid"] . ".jpg";?>
-                <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 
-            } 
-            else if(file_exists("pfp-images/".$_SESSION["userid"] . ".png")){
-                $pfp = $_SESSION["userid"] . ".png";?>
-                <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 
-            } 
-            else if(file_exists("pfp-images/".$_SESSION["userid"] . ".gif")){
-                $pfp = $_SESSION["userid"] . ".gif";?>
-                <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 
-            } 
-            else {
-                echo "<img src='Images/avatar.png' alt='Avatar' class='avatar'  >";
-                echo $_SESSION["userid"];
-            }
-            ?>
+            <?php
+                $ft = get_ft($row["userid"]);
+                if($ft == ""){
+                    echo "<img src='Images/avatar.png' alt='Avatar' class='avatar'  >";
+                }else{
+                    $pfp = $row["userid"] . "." . $ft;?>
+                    <img src='<?="pfp-images/".$pfp?>' alt='Avatar' class='avatar'  > <?php 
+                }
+                ?>
+            
                 <strong class="me-auto"><?=$name?></strong>
                 <small>
                     <?=$date?>
