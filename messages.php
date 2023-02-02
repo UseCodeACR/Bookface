@@ -93,7 +93,7 @@ function get_ft($userid){
             <div class="toast-header" style="<?= $style ?>">
             <?php
                 $ft = get_ft($row["userid"]);
-                if($ft == ""){
+                if($ft == "0"){
                     echo "<img src='Images/avatar.png' alt='Avatar' class='avatar'  >";
                 }else{
                     $pfp = $row["userid"] . "." . $ft;?>

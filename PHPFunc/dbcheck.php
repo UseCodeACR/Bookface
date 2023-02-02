@@ -93,6 +93,17 @@ function delete_user(){
     
 }
 
+function reset_pfp(){
+    $conn = connect();
+    $query = "UPDATE users SET ft = '0' WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $_GET["id"]);
+    $stmt->execute();
+    $_SESSION["reset_pfp"] = true;
+    
+    
+}
+
 function delete_messages(){
     $conn = connect();
     $query = "DELETE FROM messages WHERE id = ?";

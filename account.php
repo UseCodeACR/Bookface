@@ -61,7 +61,7 @@ if(!isset($_SESSION["userid"])){
 
     <?php
     get_ft();
-    if($_SESSION["dbft"] == ""){
+    if($_SESSION["dbft"] == "0"){
         echo "<img src='Images/avatar.png' alt='Avatar' class='avatar'  >";
     }else{
         $pfp = $_SESSION["userid"] . "." . "$_SESSION[dbft]";?>

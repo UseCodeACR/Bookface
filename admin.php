@@ -73,6 +73,7 @@ if(!isset($_SESSION["userid"])){
             <th> Email </th>
             <th> IsAdmin </th>
             <th> Edit </th>
+            <th> Reset </th>
             <th> Delete </th>
         </tr>
     </center>
@@ -88,7 +89,6 @@ $result = $conn->query($sql);
 if(isset($_SESSION["isadmin"]) && $_SESSION["isadmin"] == true){
     echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
     <strong>Success!</strong> Welcome To The Admin Page!
-    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
     </div>";
 } else {
     $_SESSION["tried-to-access-admin"] = true;
@@ -105,7 +105,9 @@ if(isset($_SESSION["isadmin"]) && $_SESSION["isadmin"] == true){
         <td><?= $row["email"] ?></td>
         <td><?= $row["is_admin"] ?></td>
         <td><a href="edit-user.php?id=<?= $row["id"] ?>"> Edit </a> </td>
+        <td><a href="reset-pfp.php?id=<?= $row["id"] ?>"> PFP </a> </td>
         <td><a href="delete-user.php?id=<?= $row["id"] ?>"> Delete </a> </td>
+
     </tr>
 <?php endwhile; ?>
 
