@@ -17,7 +17,7 @@ if(!isset($_SESSION["userid"])){
     <?php require dirname(__FILE__). "/PHPFunc/db-connect.php";?>
     <?php require dirname(__FILE__). "/PHPFunc/dbcheck.php";?>
 
-    <!--
+    
     <script>
         const interval = setInterval(function() {
         const xhttp = new XMLHttpRequest();
@@ -26,9 +26,9 @@ if(!isset($_SESSION["userid"])){
         };
         xhttp.open("GET", "messages-update.php");
         xhttp.send();
-        }, 1000);
+        }, );
     </script>
-    -->
+    
     <style>
 
 

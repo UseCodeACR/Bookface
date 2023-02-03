@@ -26,9 +26,9 @@ session_start();
 
 
     else{
-        dbcheck();
+        check_admin();
         $conn = connect();
-        $message_clean = strip_tags($_POST["message"], '<br>');
+        $message_clean = strip_tags($_POST["message"]);
         $query = "INSERT INTO messages (message, userid) VALUES (?,?)";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("si", $message_clean,$_SESSION["userid"]);

@@ -44,7 +44,7 @@ function dbchecklogin(){
 function check_admin(){
     //echo "working";
     $conn = connect();
-    $query = "SELECT * FROM users WHERE email = '$_POST[email]'";
+    $query = "SELECT * FROM users WHERE id = $_SESSION[userid]";
     $result = mysqli_query($conn, $query);
     $num = mysqli_num_rows($result);
     if ($num == 1){
@@ -55,12 +55,12 @@ function check_admin(){
     if($admin == 1){
         $_SESSION["isadmin"] = true;
         //header ("Location: /projects/Bookface/Index.php");
-        exit();
+        
     }
     else{
         $_SESSION["isadmin"] = false;
         //header ("Location: /projects/Bookface/Index.php");
-        exit();
+        
     }
 }
 }

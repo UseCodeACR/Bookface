@@ -58,9 +58,11 @@ function addtodb(){
     $conn = connect();
     $hash = $_SESSION["password"];
     $hash = password_hash($hash, PASSWORD_DEFAULT);
-    $query = "INSERT INTO users (name, email, password) VALUES (?,?,?)";
+    $name_clean = strip_tags($_SESSION["name"], '<br>');
+    $ft_signup = "0";
+    $query = "INSERT INTO users (name, email, password, ft) VALUES (?,?,?,?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("sss", $_SESSION["name"], $_SESSION["email"], $hash);
+    $stmt->bind_param("ssss", $name_clean, $_SESSION["email"], $hash, $ft_signup);
     $stmt->execute();
     $_SESSION["signup"] = true;
     //header ("Location: Index.php");
