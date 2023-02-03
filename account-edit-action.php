@@ -23,9 +23,10 @@ session_start()
 $conn = connect();
 $hash = $_POST["password"];
 $hash = password_hash($hash, PASSWORD_DEFAULT);
+$name_clean = strip_tags($_POST["name"], '<br>');
 $query = "UPDATE users SET name=?, password=? WHERE id=?";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("ssi", $_POST["name"], $hash, $_POST["id"]);
+$stmt->bind_param("ssi", $name_clean, $hash, $_POST["id"]);
 $stmt->execute();
 
 $_SESSION["updated"] = true;
